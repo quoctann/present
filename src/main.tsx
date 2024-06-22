@@ -6,18 +6,23 @@ import {
   Route,
   RouterProvider
 } from 'react-router-dom';
+import CopyPasta, { loader as CopyPastaLoader } from './features/copypasta/CopyPasta.tsx';
 import './index.css';
 import About from './pages/About.tsx';
 import App from './pages/App.tsx';
-import HomePage from './pages/HomePage.tsx';
 import ErrorPage from './pages/ErrorPage.tsx';
+import HomePage from './pages/HomePage.tsx';
+import LoginPage from './pages/LoginPage.tsx';
+import { RoutePath } from './routes/routing.ts';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+    <Route path={RoutePath.Root} element={<App />} errorElement={<ErrorPage />}>
       <Route errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} />
-        <Route path="about" element={<About />} />
+        <Route path={RoutePath.Login} element={<LoginPage />} />
+        <Route path={RoutePath.About} element={<About />} />
+        <Route path={RoutePath.CopyPasta} element={<CopyPasta />} loader={CopyPastaLoader} />
       </Route>
     </Route>
   )

@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import { AlignLeft, Bell, Moon } from 'react-feather';
 import { useEffect } from 'react';
+import { AlignLeft, Bell, Moon, Sun } from 'react-feather';
+import { Link } from 'react-router-dom';
 import { themeChange } from 'theme-change';
+import { RoutePath } from '../routes/routing';
 
 const NavBar = () => {
   useEffect(() => {
@@ -17,12 +18,15 @@ const NavBar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-100 rounded-box w-52">
+            className="menu menu-sm dropdown-content dropdown-open mt-3 z-[1] p-2 shadow-lg bg-base-100 rounded-box w-52">
             <li>
-              <Link to={'/'}>Home</Link>
+              <Link to={RoutePath.Root}>Home</Link>
             </li>
             <li>
-              <Link to={'/about'}>Portfolio</Link>
+              <Link to={RoutePath.About}>About</Link>
+            </li>
+            <li>
+              <Link to={RoutePath.CopyPasta}>Copypasta</Link>
             </li>
           </ul>
         </div>
@@ -31,14 +35,19 @@ const NavBar = () => {
         <a className="btn btn-ghost text-xl">tôi là tấn</a>
       </div>
       <div className="navbar-end">
-        <button
-          className="btn btn-ghost btn-circle"
-          data-toggle-theme="dim,retro"
-          data-act-class="ACTIVECLASS">
-          <div className="indicator">
-            <Moon />
-          </div>
-        </button>
+        <label className="swap swap-rotate">
+          {/* this hidden checkbox controls the state */}
+          <input
+            type="checkbox"
+            className="theme-controller"
+            data-toggle-theme="retro,dim"
+            data-act-class="ACTIVECLASS"
+          />
+          {/* sun icon */}
+          <Sun className="swap-off " />
+          {/* moon icon */}
+          <Moon className="swap-on  " />
+        </label>
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">
             <Bell />
