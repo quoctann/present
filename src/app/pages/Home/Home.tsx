@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { RoutePath } from '../routes/routing';
+import { Link } from 'react-router';
+import { RoutePath } from '../../routes';
 
 const HomePage = () => {
   return (
