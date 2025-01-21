@@ -1,7 +1,7 @@
 import { Clipboard } from 'react-feather';
-import { useLoaderData } from 'react-router-dom';
-import { getAllCopyPasta } from '../../services/mock-api';
-import { MockCopyPastaOptions, MockCopyPasteType } from '../../services/mock-data';
+import { useLoaderData } from 'react-router';
+import { getAllCopyPasta } from '../../../mocks/mock-api';
+import { MockCopyPastaOptions, MockCopyPasteType } from '../../../mocks/mock-data';
 import { useState } from 'react';
 
 export async function loader(request: any) {

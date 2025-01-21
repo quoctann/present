@@ -1,0 +1,47 @@
+# Package to help improve develop experience
+
+rimraf
+pre-commit
+ts-node
+nodemon
+
+# Folder structure
+
+Note:
+- Make side effect everything that out of your control (setTimeout, ServiceWorker, API request,...)
+- In Pages/UI: initial APIs should be called on useEffect of parent component (instead of called on partial) and be wrapped by Promise.all([]) to collecting data. Browser by default can call 6 requests one time, as the result it could be smoother if implementing it
+- In case we have more than 2 screen/pages/feature use the same logic function, we need to consider move this function to higher level folder structure (for common uses)
+
+/public
+/src
+    /app * Most application source code should put in there
+        /__test__ * Unit tes put in right here, if careless on impaction we can put it on ScreenName folder *
+            /ScreenName
+        /assets * Static file for general purposes *
+        /components * Common components (input, dropdown, 3rd libs component owner,...) *
+        /hooks * Hooks common (debound, fill input,..) *
+        /layouts * Static UI (header, footer, 404/502 page,...) *
+        /locales * localization files (en.json) *
+        /models * Structure for common object (request, request, JWT struct,...) *
+        /modules * Your own libs or extend from 3rd (internal, private libs) *
+            /Utils * Contains reusable func from multiple UI screens (if more than 2 screen use the same func) *
+        /pages * What are remaining of application, project member usually modify in this folder, every upper folder level content modifying assume as major changes and PTL approval needed
+            /system_one * [opt] If your application contains multiple systems you can wrap it by one more level of folder, if not the pages structure should enough
+            /Home * 1 UI Page or Screen or Feature *
+                /models * Similar usage as upper level but only use in this module *
+                /partials * Partial UI, split entire large screen into smaller one *
+                /schemas * In partial form we can verify, validate data, biz logic,... put the kind of stuff in here *
+                /services * Contains side effect *
+                /usecases * Contains complex biz process (CSV, user file uploading,...) *
+                home.css
+                Home.js * Matching with folder/screen module name, presented a feature *
+                homeStore.js * Home's local store because we have partials so we need a store to passing value down to nested components (number of components greater than 2)*
+                index.js * barrel export to shorting import path *
+        /routes * routes structure, can be separated into multiple system files if it complex*
+        /styles * common CSS for entire application (font size, color,...) *
+    /mocks * mock data / service worker / setup data test e2e / wait for integration *
+    /settings * environment configuration *
+    App.js
+    index.js
+    setupTest.js * Initial UT setup *
+package.json
