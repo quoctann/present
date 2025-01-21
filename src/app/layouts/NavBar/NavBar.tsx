@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { AlignLeft, Bell, Moon, Sun } from 'react-feather';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { themeChange } from 'theme-change';
-import { RoutePath } from '../routes/routing';
+import { RoutePath } from '../../routes';
 
 const NavBar = () => {
   useEffect(() => {
