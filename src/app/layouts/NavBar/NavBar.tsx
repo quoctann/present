@@ -28,11 +28,14 @@ const NavBar = () => {
             <li>
               <Link to={RoutePath.CopyPasta}>Copypasta</Link>
             </li>
+            <li>
+              <Link to={RoutePath.Portfolio}>Portfolio</Link>
+            </li>
           </ul>
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">tôi là tấn</a>
+        <a className="btn btn-ghost text-xl">present</a>
       </div>
       <div className="navbar-end">
         <label className="swap swap-rotate">
